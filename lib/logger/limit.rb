@@ -5,7 +5,30 @@ require 'logger/limit/version'
 
 class Logger
   module Limit
-    class Error < StandardError; end
-    # Your code goes here...
+    @@storage = [] # rubocop:disable Style/ClassVars
+
+    def add(*args, &block)
+      severity = args.first
+
+      if severity < Logger::ERROR
+        @@storage << { args: args, block: block }
+      else
+        @@storage.each do |stored_log|
+          super(*stored_log[:args], &stored_log[:block])
+        end
+
+        clear_stored_logs
+
+        super
+      end
+    end
+
+    module_function
+
+    def clear_stored_logs
+      @@storage.clear
+    end
   end
+
+  prepend Logger::Limit
 end

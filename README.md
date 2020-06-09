@@ -1,6 +1,6 @@
 # Logger::Limit
 
-Logger::Limit changes [Logger](https://github.com/ruby/logger) behaviour to only output previous log messages when a log of ERROR serverity or higher occurs.
+Logger::Limit changes [Logger](https://github.com/ruby/logger) behavior to only output previous log messages when a log of ERROR severity or higher occurs.
 
 This gem is an implementation based on the idea proposed by the following blog post: https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context
 
@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+All you need to do is require `logger-limit` on your application:
+
+```ruby
+require 'logger/limit'
+```
+
+By requiring this gem, you are monkey patching `Logger` to store every log message with severity lower than `Logger::ERROR`. Once a log of severity `Logger::ERROR` or higher happens, all the stored messages will become visible in the correct order.
 
 ## Development
 

@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Dominik Reller']
   spec.email         = ['Dom-R@users.noreply.github.com']
 
-  spec.summary       = 'This gem changes Logger behaviour to only output previous log messages when a log of ERROR severity or higher occurs.' # rubocop:disable Layout/LineLength
-  spec.description   = 'This gem changes Logger behaviour to only output previous log messages when a log of ERROR severity or higher occurs. This gem is an implementation based on the idea proposed by the following blog post: https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context' # rubocop:disable Layout/LineLength
+  spec.summary       = 'This gem changes Logger behavior to only output previous log messages when a log of ERROR severity or higher occurs.' # rubocop:disable Layout/LineLength
+  spec.description   = 'This gem changes Logger behavior to only output previous log messages when a log of ERROR severity or higher occurs. This gem is an implementation based on the idea proposed by the following blog post: https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context' # rubocop:disable Layout/LineLength
   spec.homepage      = 'https://www.github.com/Dom-R/logger-limit'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
