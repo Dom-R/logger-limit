@@ -22,6 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
+**WARNING**: The current version of `logger-limit` does not correctly support parallelism due to how messages are saved. Basic tests with `Process` and `Thread` show that `Process.fork` seems to work correctly.
+
 All you need to do is require `logger-limit` on your application:
 
 ```ruby
