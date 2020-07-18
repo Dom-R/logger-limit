@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    logger-limit (0.1.0)
+    logger-limit (0.2.0)
       logger
 
 GEM

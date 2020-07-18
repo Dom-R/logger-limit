@@ -2,18 +2,19 @@
 
 require 'logger'
 require 'logger/limit/version'
+require 'logger/limit/ring_buffer'
 
 class Logger
   module Limit
-    @@storage = [] # rubocop:disable Style/ClassVars
+    @@storage = RingBuffer.new # rubocop:disable Style/ClassVars
 
     def add(*args, &block)
       severity = args.first
 
       if severity < Logger::ERROR
-        @@storage << { args: args, block: block }
+        @@storage.add({ args: args, block: block })
       else
-        @@storage.each do |stored_log|
+        @@storage.flush.each do |stored_log|
           super(*stored_log[:args], &stored_log[:block])
         end
 
@@ -26,7 +27,7 @@ class Logger
     module_function
 
     def clear_stored_logs
-      @@storage.clear
+      @@storage.flush
     end
   end
 
